@@ -140,7 +140,8 @@
     <div id="puzzle3" class="puzzle-section hidden">
       <h2>Puzzle 3</h2>
       <p>
-        Math Puzzle: "Is he the most amazing person you know?"
+        Math Puzzle: "What is the next number in the sequence:
+        2, 4, 8, 16, ?"
       </p>
       <input type="text" id="answer3" placeholder="Your answer here">
       <br>
@@ -168,7 +169,7 @@
 
     <!-- Secret Message -->
     <div id="secretMessage" class="hidden">
-      <h2>That's my girl, I knew you'd make it!</h2>
+      <h2>Congratulations!</h2>
       <p class="secret-text">
         I know it took me way too long to ask this, and maybe at times, it seemed like I didn’t care—but the truth is, I care about you more than I can ever put into words. You are on my mind from the moment I wake up to the second I fall asleep. Your texts instantly brighten my mood, your TikToks always make me laugh (even when I don’t want to), and your smile? It’s my favorite thing in the world.
         <br><br>
@@ -192,7 +193,7 @@
           document.getElementById('lovelyMessage1').classList.remove('hidden');
         }, 1000);
       } else {
-        document.getElementById('feedback1').textContent = "Wow, what! what!";
+        document.getElementById('feedback1').textContent = "Try again!";
       }
     }
 
@@ -206,21 +207,21 @@
           document.getElementById('lovelyMessage2').classList.remove('hidden');
         }, 1000);
       } else {
-        document.getElementById('feedback2').textContent = "We acha bana!";
+        document.getElementById('feedback2').textContent = "Try again!";
       }
     }
 
     // Puzzle 3: Answer should be "32"
     function checkPuzzle3() {
       const answer3 = document.getElementById('answer3').value.trim();
-      if(answer3 === "yes") {
+      if(answer3 === "32") {
         document.getElementById('feedback3').textContent = "Correct!";
         setTimeout(() => {
           document.getElementById('puzzle3').classList.add('hidden');
           document.getElementById('lovelyMessage3').classList.remove('hidden');
         }, 1000);
       } else {
-        document.getElementById('feedback3').textContent = "Na nimeunda website 😂😂!";
+        document.getElementById('feedback3').textContent = "Try again!";
       }
     }
 
