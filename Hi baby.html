@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Valentine Puzzle</title>
+  <!-- Google Fonts for a romantic feel -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset some default styling */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    /* Full-page background with a soft gradient overlaying a valentine image */
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(rgba(255, 182, 193, 0.8), rgba(255, 182, 193, 0.8)),
+                  url('https://www.awarenessdays.com/wp-content/uploads/2024/11/Valentines-Day-1-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+      padding: 20px;
+    }
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #d6336c;
+      margin-bottom: 10px;
+    }
+    h2 {
+      color: #b30047;
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .puzzle-section {
+      margin-bottom: 30px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #d6336c;
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #b32b5a;
+    }
+    .hidden {
+      display: none;
+    }
+    .feedback {
+      font-weight: bold;
+      color: #2d862d;
+      margin-top: 10px;
+    }
+    /* Heart image styling */
+    .heart-img {
+      width: 100px;
+      margin: 20px auto;
+      display: block;
+    }
+    /* Secret message styling */
+    .secret-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      color: #d6336c;
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+    .lovely-message {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: #d6336c;
+      margin-top: 20px;
+      line-height: 1.5;
+      animation: fadeIn 2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header with a heart image -->
+    <img class="heart-img" src="https://thumbs.dreamstime.com/b/valentine-heart-19481586.jpg" alt="Heart">
+    <h1>Welcome, Tresy!</h1>
+    <p>Solve the puzzles below to reveal a secret message filled with love.</p>
+
+    <!-- Puzzle 1 -->
+    <div id="puzzle1" class="puzzle-section">
+      <h2>Puzzle 1</h2>
+      <p>
+        What is your boyfriend's second name?
+      </p>
+      <input type="text" id="answer1" placeholder="Your answer here">
+      <br>
+      <button onclick="checkPuzzle1()">Submit</button>
+      <p id="feedback1" class="feedback"></p>
+    </div>
+
+    <!-- Puzzle 2 -->
+    <div id="puzzle2" class="puzzle-section hidden">
+      <h2>Puzzle 2</h2>
+      <p>
+        Does he love you?
+      </p>
+      <input type="text" id="answer2" placeholder="Your answer here">
+      <br>
+      <button onclick="checkPuzzle2()">Submit</button>
+      <p id="feedback2" class="feedback"></p>
+    </div>
+
+    <!-- Puzzle 3 -->
+    <div id="puzzle3" class="puzzle-section hidden">
+      <h2>Puzzle 3</h2>
+      <p>
+        Math Puzzle: "Is he the most amazing person you know?"
+      </p>
+      <input type="text" id="answer3" placeholder="Your answer here">
+      <br>
+      <button onclick="checkPuzzle3()">Submit</button>
+      <p id="feedback3" class="feedback"></p>
+    </div>
+
+    <!-- Lovely Message 1 -->
+    <div id="lovelyMessage1" class="lovely-message hidden">
+      <p>Tresy, you are the most amazing person I know. Your kindness and intelligence inspire me every day. ❤️</p>
+      <button onclick="revealPuzzle2()">Reveal Next Puzzle</button>
+    </div>
+
+    <!-- Lovely Message 2 -->
+    <div id="lovelyMessage2" class="lovely-message hidden">
+      <p>Your smile lights up my world, and your laughter is my favorite sound. I’m so lucky to have you in my life. ❤️</p>
+      <button onclick="revealPuzzle3()">Reveal Next Puzzle</button>
+    </div>
+
+    <!-- Lovely Message 3 -->
+    <div id="lovelyMessage3" class="lovely-message hidden">
+      <p>Every moment with you feels like a dream. I cherish every second we spend together. ❤️</p>
+      <button onclick="revealSecretMessage()">Reveal Secret Message</button>
+    </div>
+
+    <!-- Secret Message -->
+    <div id="secretMessage" class="hidden">
+      <h2>That's my girl, I knew you'd make it!</h2>
+      <p class="secret-text">
+        I know it took me way too long to ask this, and maybe at times, it seemed like I didn’t care—but the truth is, I care about you more than I can ever put into words. You are on my mind from the moment I wake up to the second I fall asleep. Your texts instantly brighten my mood, your TikToks always make me laugh (even when I don’t want to), and your smile? It’s my favorite thing in the world.
+        <br><br>
+        You are one of the smartest, kindest, and most incredible people I know. The way you see the world, the way you handle things with such grace and confidence—it amazes me every day. Even your not-so-funny jokes somehow make me laugh, and I wouldn’t trade a single moment with you for anything.
+        <br><br>
+        Tresy, I love you. And I hope I’m not too late to ask…
+        <br><br>
+        Will you be my Valentine? ❤️
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Puzzle 1: Answer should be "shamola"
+    function checkPuzzle1() {
+      const answer1 = document.getElementById('answer1').value.trim().toLowerCase();
+      if(answer1 === "shamola") {
+        document.getElementById('feedback1').textContent = "Correct!";
+        setTimeout(() => {
+          document.getElementById('puzzle1').classList.add('hidden');
+          document.getElementById('lovelyMessage1').classList.remove('hidden');
+        }, 1000);
+      } else {
+        document.getElementById('feedback1').textContent = "Wow, what! what!";
+      }
+    }
+
+    // Puzzle 2: Answer should be "yes"
+    function checkPuzzle2() {
+      const answer2 = document.getElementById('answer2').value.trim().toLowerCase();
+      if(answer2 === "yes") {
+        document.getElementById('feedback2').textContent = "Correct!";
+        setTimeout(() => {
+          document.getElementById('puzzle2').classList.add('hidden');
+          document.getElementById('lovelyMessage2').classList.remove('hidden');
+        }, 1000);
+      } else {
+        document.getElementById('feedback2').textContent = "We acha bana!";
+      }
+    }
+
+    // Puzzle 3: Answer should be "32"
+    function checkPuzzle3() {
+      const answer3 = document.getElementById('answer3').value.trim();
+      if(answer3 === "yes") {
+        document.getElementById('feedback3').textContent = "Correct!";
+        setTimeout(() => {
+          document.getElementById('puzzle3').classList.add('hidden');
+          document.getElementById('lovelyMessage3').classList.remove('hidden');
+        }, 1000);
+      } else {
+        document.getElementById('feedback3').textContent = "Na nimeunda website 😂😂!";
+      }
+    }
+
+    // Reveal Puzzle 2
+    function revealPuzzle2() {
+      document.getElementById('lovelyMessage1').classList.add('hidden');
+      document.getElementById('puzzle2').classList.remove('hidden');
+    }
+
+    // Reveal Puzzle 3
+    function revealPuzzle3() {
+      document.getElementById('lovelyMessage2').classList.add('hidden');
+      document.getElementById('puzzle3').classList.remove('hidden');
+    }
+
+    // Reveal Secret Message
+    function revealSecretMessage() {
+      document.getElementById('lovelyMessage3').classList.add('hidden');
+      document.getElementById('secretMessage').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
